@@ -1,20 +1,86 @@
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
+const employeesArray = [];
+
 // Collect employee data
 const collectEmployees = function() {
   // TODO: Get user input to create and return an array of employee objects
+
+  // Declaring variables to be used later in the function to define the user-inputted objects
+
+  let keepAdding = true; // Sets parameter for while loop to begin
+  let first;
+  let last;
+  let annual;
+
+  while(keepAdding){
+    
+    first = prompt("Please enter the employee's first name:");
+
+    if(first === null){ // Breaks the loop if the user clicks cancel
+        break;
+    }
+
+    last = prompt("Please enter the employee's last name:");
+
+    if(last === null){ // Breaks the loop if the user clicks cancel
+        break;
+      }
+    
+  let validInt = false;
+
+    while(!validInt){ // Checks if a valid number is used for the salary
+      annual = prompt("Please enter the employee's annual salary:");
+
+      if(isNaN(parseFloat(annual))){ // isNan means "is not a number" and here it is ensuring a valid number is entered for the salary
+        alert("Invalid input. Please try again, and enter a number.");
+      }
+      else{
+        validInt = true;
+      }
+    }
+
+    annual = parseFloat(annual); // Converts the annual value from a string to a number
+
+    const person = { // Stores user inputs as an object
+      firstName: first,
+      lastName: last,
+      salary: annual, 
+    };
+
+    employeesArray.push(person); // Adds the created objects to the array
+
+    keepAdding = window.confirm("Add another employee?"); // Allows the user to continue adding employees if they wish
+  }
+  return employeesArray;
 }
 
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
-  // TODO: Calculate and display the average salary
+  // TODO: Calculate and display the average salary 
+  const salaries = employeesArray.map((employee) => parseFloat(employee.salary)); // Creates an array for reference in the following functions, and ensures the salary inputs are being logged as numbers
+  const sum = salaries.reduce((total, salary) => total + salary, 0); // Adds together the salary values
+  average = sum / employeesArray.length; // Divides the sum by the length of the array to find the average
+
+  const averageUSD = average.toLocaleString("en-US", { // Converts the average to USD 
+    style: "currency",
+    currency: "USD"
+  });
+
+  console.log(`The average salary of our ${employeesArray.length} employee(s) is ${averageUSD}`);
+  return average;
 }
 
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
   // TODO: Select and display a random employee
+  const index = Math.floor(Math.random() * employeesArray.length); // Chooses a random number based on the length of the array
+  const ranEmployee = employeesArray[index]; // Applies the former random number to choose objects from the array
+  console.log(`Congratulations to ${ranEmployee.firstName} ${ranEmployee.lastName}, our raffle winner!`);
 }
+
+
 
 /*
   ====================
