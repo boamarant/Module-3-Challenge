@@ -10,7 +10,7 @@ N/A
 
 ## Usage
 
-This project can be accessed on Git Pages at the following URL: [https://boamarant.github.io/Portfolio-Webpage-Project/](https://boamarant.github.io/Portfolio-Webpage-Project/).
+This project can be accessed on Git Pages at the following URL: [https://boamarant.github.io/Module-3-Challenge/](https://boamarant.github.io/Module-3-Challenge/).
 
 ## Credits
 

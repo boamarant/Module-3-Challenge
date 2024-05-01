@@ -59,7 +59,7 @@ const collectEmployees = function() {
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
   // TODO: Calculate and display the average salary 
-  const salaries = employeesArray.map((employee) => parseFloat(employee.salary)); // Creates an array for reference in the following functions, and ensures the salary inputs are being logged as numbers
+  const salaries = employeesArray.map((employee) => parseFloat(employee.salary)); // Creates an array for reference in the following code, and ensures the salary inputs are being logged as numbers
   const sum = salaries.reduce((total, salary) => total + salary, 0); // Adds together the salary values
   average = sum / employeesArray.length; // Divides the sum by the length of the array to find the average
 
